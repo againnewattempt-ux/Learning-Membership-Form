@@ -291,98 +291,51 @@ We will contact you soon.
     </div>
     <script>
 
-const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
-
-const form = document.getElementById("membershipForm");
-
-const success = document.getElementById("successMessage");
-
+const contact = document.getElementById("contact");
 const numberError = document.getElementById("numberError");
 
-const contact = document.getElementById("contact");
+contact.addEventListener("input", function(){
 
-contact.addEventListener("input", function () {
+this.value = this.value.replace(/\D/g,"");
 
-this.value = this.value.replace(/\D/g,'');
-
-const number = this.value;
-
-const pattern = /^03\d{9}$/;
-
-if(number.length==0){
+if(this.value.length>11){
+this.value=this.value.slice(0,11);
+}
 
 numberError.style.display="none";
-
-}
-
-else if(!pattern.test(number)){
-
-numberError.style.display="block";
-
-}
-
-else{
-
-numberError.style.display="none";
-
-}
 
 });
 
-form.addEventListener("submit",function(e){
+document.getElementById("membershipForm").addEventListener("submit",function(e){
 
 e.preventDefault();
 
-const pattern=/^03\d{9}$/;
+const number=contact.value;
 
-if(!pattern.test(contact.value)){
+if(number.length!=11){
+
+numberError.innerHTML="❌ Mobile number must contain exactly 11 digits.";
 
 numberError.style.display="block";
-
-contact.focus();
 
 return;
 
 }
 
-fetch(scriptURL,{
+if(!number.startsWith("03")){
 
-method:"POST",
+numberError.innerHTML="❌ Please enter a valid Pakistani mobile number.";
 
-body:JSON.stringify({
+numberError.style.display="block";
 
-name:document.getElementById("name").value,
+return;
 
-contact:contact.value,
+}
 
-city:document.getElementById("city").value,
+numberError.style.display="none";
 
-education:document.getElementById("education").value
-
-})
-
-})
-
-.then(()=>{
-
-form.style.display="none";
-
-success.style.display="block";
-
-})
-
-.catch(()=>{
-
-alert("Something went wrong. Please try again.");
+/* یہاں آپ کا Google Apps Script والا fetch کوڈ ہوگا */
 
 });
 
-});
-
-</script>
-
-</div>
-
-</body>
-
-    </html>
+    </script>
