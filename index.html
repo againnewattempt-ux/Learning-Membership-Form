@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Learning Membership</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,171 +22,127 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-
-background:linear-gradient(135deg,#2563eb,#1e3a8a);
-
+background:linear-gradient(135deg,#2563eb,#1e40af);
 min-height:100vh;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 padding:20px;
-
 }
 
 .container{
-
 width:100%;
-
 max-width:430px;
-
 background:#fff;
-
 border-radius:18px;
-
 padding:30px;
-
 box-shadow:0 20px 40px rgba(0,0,0,.25);
+animation:fadeIn .5s;
+}
 
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 .logo{
-
-width:70px;
-
-height:70px;
-
-border-radius:50%;
-
-background:#2563eb;
-
+width:75px;
+height:75px;
 margin:auto;
-
+border-radius:50%;
+background:#2563eb;
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
-font-size:32px;
-
-color:white;
-
+font-size:34px;
 font-weight:bold;
-
+color:#fff;
 }
 
 h2{
-
 text-align:center;
-
 margin-top:15px;
-
 color:#1f2937;
-
 }
 
 .subtitle{
-
 text-align:center;
-
-color:#6b7280;
-
-font-size:14px;
-
 margin-top:8px;
-
 margin-bottom:25px;
-
+font-size:14px;
+color:#6b7280;
 }
 
 label{
-
 display:block;
-
 margin-top:15px;
-
 font-weight:600;
-
 color:#374151;
-
 }
 
-input,select{
-
+input,
+select{
 width:100%;
-
 padding:14px;
-
 margin-top:6px;
-
 border:1px solid #d1d5db;
-
 border-radius:10px;
-
 font-size:15px;
-
 outline:none;
-
 transition:.3s;
-
 }
 
 input:focus,
-
 select:focus{
-
 border-color:#2563eb;
-
 box-shadow:0 0 8px rgba(37,99,235,.25);
-
 }
 
 .error{
-
 display:none;
-
+color:#dc2626;
 font-size:13px;
-
-color:red;
-
 margin-top:5px;
-
 }
 
 button{
-
 width:100%;
-
 padding:15px;
-
 margin-top:25px;
-
 background:#2563eb;
-
-color:white;
-
-border:none;
-
-border-radius:10px;
-
+color:#fff;
 font-size:17px;
-
 font-weight:600;
-
+border:none;
+border-radius:10px;
 cursor:pointer;
-
 transition:.3s;
-
 }
 
 button:hover{
-
 background:#1d4ed8;
+}
 
+.success{
+display:none;
+text-align:center;
+padding:20px;
+}
+
+.success h2{
+color:#16a34a;
+margin-bottom:10px;
+}
+
+.success p{
+color:#555;
+line-height:1.6;
 }
 
 </style>
@@ -204,65 +157,50 @@ background:#1d4ed8;
 
 <h2>Learning Membership</h2>
 
-<p class="subtitle">Please complete your application below.</p>
+<p class="subtitle">
+Please complete your application below.
+</p>
 <form id="membershipForm">
 
-<label>Full Name</label>
+<label for="name">Full Name</label>
 <input
 type="text"
 id="name"
-name="name"
 placeholder="Enter your full name"
 required>
 
-<label>Contact Number</label>
-
+<label for="contact">Contact Number</label>
 <input
 type="tel"
 id="contact"
-name="contact"
 placeholder="03XXXXXXXXX"
 maxlength="11"
+inputmode="numeric"
 required>
 
-<small class="error" id="numberError">
-Please enter a valid Pakistani mobile number (03XXXXXXXXX)
+<small id="numberError" class="error">
+Please enter a valid Pakistani mobile number.
 </small>
 
-<label>City</label>
-
+<label for="city">City</label>
 <input
 type="text"
 id="city"
-name="city"
 placeholder="Enter your city"
 required>
 
-<label>Education</label>
-
-<select
-id="education"
-name="education"
-required>
+<label for="education">Education</label>
+<select id="education" required>
 
 <option value="">Select Education</option>
-
 <option>None (No Education)</option>
-
 <option>Primary</option>
-
 <option>Middle</option>
-
 <option>Matric</option>
-
 <option>Intermediate</option>
-
 <option>DAE</option>
-
 <option>Bachelor</option>
-
 <option>Master</option>
-
 <option>Other</option>
 
 </select>
@@ -273,69 +211,89 @@ Apply Now
 
 </form>
 
-<div id="successMessage" style="display:none;text-align:center;padding:25px;">
+<div id="successMessage" class="success">
 
-<h2 style="color:#16a34a;">
-🎉 Application Submitted
-</h2>
+<h2>🎉 Application Submitted Successfully</h2>
 
-<p style="margin-top:10px;font-size:16px;color:#555;">
-Your information has been submitted successfully.
+<p>
+Thank you for applying for Learning Membership.
 </p>
 
-<p style="margin-top:8px;color:#777;">
-Thank you for joining Learning Membership.
+<p>
+Your information has been received successfully.
 We will contact you soon.
 </p>
 
     </div>
     <script>
 
+const scriptURL = "https://script.google.com/macros/s/AKfycby4FxxuELTYUO3mIqvyhFd7gieT1fZnwtLhwvviAup6fP24VfG0bLJvSTTKwvasljxK/exec";
+
+const form = document.getElementById("membershipForm");
+const success = document.getElementById("successMessage");
 const contact = document.getElementById("contact");
 const numberError = document.getElementById("numberError");
 
-contact.addEventListener("input", function(){
+contact.addEventListener("input", function () {
 
-this.value = this.value.replace(/\D/g,"");
+this.value = this.value.replace(/\D/g, "");
 
-if(this.value.length>11){
-this.value=this.value.slice(0,11);
+if (this.value.length > 11) {
+this.value = this.value.slice(0,11);
 }
 
-numberError.style.display="none";
+numberError.style.display = "none";
 
 });
 
-document.getElementById("membershipForm").addEventListener("submit",function(e){
+form.addEventListener("submit", function(e){
 
 e.preventDefault();
 
-const number=contact.value;
+const number = contact.value;
 
-if(number.length!=11){
-
-numberError.innerHTML="❌ Mobile number must contain exactly 11 digits.";
-
-numberError.style.display="block";
-
+if(number.length !== 11){
+numberError.innerHTML = "Please enter exactly 11 digits.";
+numberError.style.display = "block";
 return;
-
 }
 
-if(!number.startsWith("03")){
-
-numberError.innerHTML="❌ Please enter a valid Pakistani mobile number.";
-
-numberError.style.display="block";
-
+if(!/^03\d{9}$/.test(number)){
+numberError.innerHTML = "Please enter a valid Pakistani mobile number.";
+numberError.style.display = "block";
 return;
-
 }
 
-numberError.style.display="none";
+fetch(scriptURL,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+name:document.getElementById("name").value,
+contact:number,
+city:document.getElementById("city").value,
+education:document.getElementById("education").value
+})
+})
+.then(response=>response.text())
+.then(data=>{
 
-/* const scriptURL = "https://script.google.com/macros/s/AKfycby4FxxuELTYUO3mIqvyhFd7gieT1fZnwtLhwvviAup6fP24VfG0bLJvSTTKwvasljxK/exec"; */
+form.style.display="none";
+success.style.display="block";
+
+})
+.catch(error=>{
+
+alert("Submission failed. Please try again.");
 
 });
 
-    </script>
+});
+
+</script>
+
+</div>
+
+</body>
+</html>
