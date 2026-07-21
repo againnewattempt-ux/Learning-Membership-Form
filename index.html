@@ -1,129 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Learning Membership</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0f172a,#2563eb);
-display:flex;
-justify-content:center;
-align-items:center;
+
+background:linear-gradient(135deg,#2563eb,#1e3a8a);
+
 min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
 padding:20px;
+
 }
 
 .container{
+
 width:100%;
-max-width:420px;
+
+max-width:430px;
+
 background:#fff;
-padding:30px;
+
 border-radius:18px;
-box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+padding:30px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+}
+
+.logo{
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
+background:#2563eb;
+
+margin:auto;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:32px;
+
+color:white;
+
+font-weight:bold;
+
 }
 
 h2{
+
 text-align:center;
-color:#2563eb;
-margin-bottom:8px;
+
+margin-top:15px;
+
+color:#1f2937;
+
 }
 
-p{
+.subtitle{
+
 text-align:center;
-color:#666;
-margin-bottom:20px;
+
+color:#6b7280;
+
 font-size:14px;
+
+margin-top:8px;
+
+margin-bottom:25px;
+
 }
 
 label{
+
 display:block;
+
 margin-top:15px;
-margin-bottom:6px;
-font-weight:bold;
-color:#333;
+
+font-weight:600;
+
+color:#374151;
+
 }
 
 input,select{
+
 width:100%;
-padding:13px;
-border:1px solid #ccc;
+
+padding:14px;
+
+margin-top:6px;
+
+border:1px solid #d1d5db;
+
 border-radius:10px;
+
 font-size:15px;
+
 outline:none;
+
+transition:.3s;
+
 }
 
-input:focus,select:focus{
+input:focus,
+
+select:focus{
+
 border-color:#2563eb;
+
+box-shadow:0 0 8px rgba(37,99,235,.25);
+
+}
+
+.error{
+
+display:none;
+
+font-size:13px;
+
+color:red;
+
+margin-top:5px;
+
 }
 
 button{
+
 width:100%;
-padding:14px;
-margin-top:20px;
-border:none;
-border-radius:10px;
+
+padding:15px;
+
+margin-top:25px;
+
 background:#2563eb;
+
 color:white;
-font-size:16px;
-font-weight:bold;
+
+border:none;
+
+border-radius:10px;
+
+font-size:17px;
+
+font-weight:600;
+
 cursor:pointer;
+
+transition:.3s;
+
 }
 
 button:hover{
+
 background:#1d4ed8;
+
 }
+
 </style>
+
 </head>
+
 <body>
 
 <div class="container">
 
+<div class="logo">L</div>
+
 <h2>Learning Membership</h2>
-<p>Please fill in your details.</p>
 
-<form action="https://formsubmit.co/againnewattempt@gmail.com" method="POST">
-
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_subject" value="New Learning Membership Form">
-<input type="hidden" name="_template" value="table">
+<p class="subtitle">Please complete your application below.</p>
+<form id="membershipForm">
 
 <label>Full Name</label>
-<input type="text" name="Name" placeholder="Enter your full name" required>
+<input
+type="text"
+id="name"
+name="name"
+placeholder="Enter your full name"
+required>
 
 <label>Contact Number</label>
-<input type="tel" name="Contact Number" placeholder="03XXXXXXXXX" required>
+
+<input
+type="tel"
+id="contact"
+name="contact"
+placeholder="03XXXXXXXXX"
+maxlength="11"
+required>
+
+<small class="error" id="numberError">
+Please enter a valid Pakistani mobile number (03XXXXXXXXX)
+</small>
 
 <label>City</label>
-<input type="text" name="City" placeholder="Enter your city" required>
+
+<input
+type="text"
+id="city"
+name="city"
+placeholder="Enter your city"
+required>
 
 <label>Education</label>
-<select name="Education" required>
+
+<select
+id="education"
+name="education"
+required>
+
 <option value="">Select Education</option>
+
 <option>None (No Education)</option>
+
 <option>Primary</option>
+
 <option>Middle</option>
+
 <option>Matric</option>
+
 <option>Intermediate</option>
+
 <option>DAE</option>
+
 <option>Bachelor</option>
+
 <option>Master</option>
+
 <option>Other</option>
+
 </select>
 
-<button type="submit">Apply Now</button>
+<button type="submit">
+Apply Now
+</button>
 
 </form>
+
+<div id="successMessage" style="display:none;text-align:center;padding:25px;">
+
+<h2 style="color:#16a34a;">
+🎉 Application Submitted
+</h2>
+
+<p style="margin-top:10px;font-size:16px;color:#555;">
+Your information has been submitted successfully.
+</p>
+
+<p style="margin-top:8px;color:#777;">
+Thank you for joining Learning Membership.
+We will contact you soon.
+</p>
+
+    </div>
+    <script>
+
+const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+const form = document.getElementById("membershipForm");
+
+const success = document.getElementById("successMessage");
+
+const numberError = document.getElementById("numberError");
+
+const contact = document.getElementById("contact");
+
+contact.addEventListener("input", function () {
+
+this.value = this.value.replace(/\D/g,'');
+
+const number = this.value;
+
+const pattern = /^03\d{9}$/;
+
+if(number.length==0){
+
+numberError.style.display="none";
+
+}
+
+else if(!pattern.test(number)){
+
+numberError.style.display="block";
+
+}
+
+else{
+
+numberError.style.display="none";
+
+}
+
+});
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const pattern=/^03\d{9}$/;
+
+if(!pattern.test(contact.value)){
+
+numberError.style.display="block";
+
+contact.focus();
+
+return;
+
+}
+
+fetch(scriptURL,{
+
+method:"POST",
+
+body:JSON.stringify({
+
+name:document.getElementById("name").value,
+
+contact:contact.value,
+
+city:document.getElementById("city").value,
+
+education:document.getElementById("education").value
+
+})
+
+})
+
+.then(()=>{
+
+form.style.display="none";
+
+success.style.display="block";
+
+})
+
+.catch(()=>{
+
+alert("Something went wrong. Please try again.");
+
+});
+
+});
+
+</script>
 
 </div>
 
 </body>
+
     </html>
