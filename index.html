@@ -7,93 +7,81 @@
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#0f172a,#2563eb);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    padding:20px;
+background:linear-gradient(135deg,#0f172a,#2563eb);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
 }
 
 .container{
-    width:100%;
-    max-width:420px;
-    background:#fff;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 15px 35px rgba(0,0,0,.25);
+width:100%;
+max-width:420px;
+background:#fff;
+padding:30px;
+border-radius:18px;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
 
 h2{
-    text-align:center;
-    color:#2563eb;
-    margin-bottom:8px;
+text-align:center;
+color:#2563eb;
+margin-bottom:8px;
 }
 
 p{
-    text-align:center;
-    color:#666;
-    margin-bottom:20px;
-    font-size:14px;
+text-align:center;
+color:#666;
+margin-bottom:20px;
+font-size:14px;
 }
 
 label{
-    display:block;
-    margin-bottom:6px;
-    margin-top:15px;
-    font-weight:bold;
-    color:#333;
+display:block;
+margin-top:15px;
+margin-bottom:6px;
+font-weight:bold;
+color:#333;
 }
 
-input,
-select{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    font-size:15px;
-    outline:none;
-    transition:.3s;
+input,select{
+width:100%;
+padding:13px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:15px;
+outline:none;
 }
 
-input:focus,
-select:focus{
-    border-color:#2563eb;
-    box-shadow:0 0 8px rgba(37,99,235,.3);
+input:focus,select:focus{
+border-color:#2563eb;
 }
 
 button{
-    width:100%;
-    margin-top:22px;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    background:#2563eb;
-    color:#fff;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
+width:100%;
+padding:14px;
+margin-top:20px;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
 }
 
 button:hover{
-    background:#1d4ed8;
-}
-
-#msg{
-    margin-top:15px;
-    text-align:center;
-    font-weight:bold;
-    color:green;
+background:#1d4ed8;
 }
 </style>
-
 </head>
 <body>
 
@@ -102,19 +90,23 @@ button:hover{
 <h2>Learning Membership</h2>
 <p>Please fill in your details.</p>
 
-<form id="membershipForm">
+<form action="https://formsubmit.co/againnewattempt@gmail.com" method="POST">
+
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_subject" value="New Learning Membership Form">
+<input type="hidden" name="_template" value="table">
 
 <label>Full Name</label>
-<input type="text" id="name" placeholder="Enter your full name" required>
+<input type="text" name="Name" placeholder="Enter your full name" required>
 
 <label>Contact Number</label>
-<input type="tel" id="contact" placeholder="03XXXXXXXXX" required>
+<input type="tel" name="Contact Number" placeholder="03XXXXXXXXX" required>
 
 <label>City</label>
-<input type="text" id="city" placeholder="Enter your city" required>
+<input type="text" name="City" placeholder="Enter your city" required>
 
 <label>Education</label>
-<select id="education" required>
+<select name="Education" required>
 <option value="">Select Education</option>
 <option>None (No Education)</option>
 <option>Primary</option>
@@ -131,34 +123,7 @@ button:hover{
 
 </form>
 
-<p id="msg"></p>
-
 </div>
 
-<script>
-const scriptURL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
-
-document.getElementById("membershipForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    fetch(scriptURL,{
-        method:"POST",
-        body:JSON.stringify({
-            name:document.getElementById("name").value,
-            contact:document.getElementById("contact").value,
-            city:document.getElementById("city").value,
-            education:document.getElementById("education").value
-        })
-    })
-    .then(()=>{
-        document.getElementById("msg").innerHTML="✅ Application Submitted Successfully!";
-        document.getElementById("membershipForm").reset();
-    })
-    .catch(()=>{
-        document.getElementById("msg").innerHTML="❌ Submission Failed!";
-    });
-});
-</script>
-
 </body>
-</html>
+    </html>
