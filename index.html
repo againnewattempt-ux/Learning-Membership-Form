@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Membership Form</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#2563eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.form-box{
+    width:90%;
+    max-width:420px;
+    background:#fff;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.form-box h2{
+    text-align:center;
+    color:#1e3a8a;
+    margin-bottom:8px;
+}
+
+.form-box p{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.input-box{
+    margin-bottom:18px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+    color:#333;
+}
+
+.input-box input,
+.input-box select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+    transition:.3s;
+}
+
+.input-box input:focus,
+.input-box select:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 8px rgba(37,99,235,.3);
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+</style>
+
+</head>
+<body>
+
+<div class="form-box">
+
+<h2>Learning Membership</h2>
+<p>Please fill out the form below.</p>
+
+<form>
+
+<div class="input-box">
+<label>Full Name</label>
+<input type="text" placeholder="Enter your full name" required>
+</div>
+
+<div class="input-box">
+<label>Contact Number</label>
+<input type="tel" placeholder="03XXXXXXXXX" required>
+</div>
+
+<div class="input-box">
+<label>City</label>
+<input type="text" placeholder="Enter your city" required>
+</div>
+
+<div class="input-box">
+<label>Education</label>
+<select required>
+<option value="">Select Education</option>
+<option>Matric</option>
+<option>Intermediate</option>
+<option>DAE</option>
+<option>Bachelor</option>
+<option>Master</option>
+<option>Other</option>
+</select>
+</div>
+
+<button type="submit">Apply Now</button>
+
+</form>
+
+</div>
+
+</body>
+  </html>
